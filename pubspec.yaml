@@ -49,6 +49,7 @@ dependencies:
   carousel_slider: ^4.1.1
   dots_indicator: ^2.1.0
   introduction_screen: ^3.0.1
+  after_layout: ^1.1.0
 
 
 
