@@ -62,7 +62,7 @@ class ColorsApp{
       fontFamily: 'Roboto');
 
   ThemeData get lightTheme => ThemeData(
-      scaffoldBackgroundColor: light,
+      scaffoldBackgroundColor: secondaryLight,
       brightness: Brightness.light,
       cardColor: secondaryLight,
       inputDecorationTheme: InputDecorationTheme(

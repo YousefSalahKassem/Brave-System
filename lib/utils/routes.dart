@@ -1,6 +1,11 @@
 import 'package:bravesystem/view/Authentication/forgot_password.dart';
 import 'package:bravesystem/view/Authentication/login_screen.dart';
 import 'package:bravesystem/view/Authentication/register_screen.dart';
+import 'package:bravesystem/view/Cafe/menu_screen.dart';
+import 'package:bravesystem/view/LandingPage/landing_page.dart';
+import 'package:bravesystem/view/Playstation/rooms_screen.dart';
+import 'package:bravesystem/view/Spinner/spinner_screen.dart';
+import 'package:bravesystem/view/Tournamets/tournamets_screen.dart';
 import 'package:bravesystem/view/onBaording/on_baording_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -12,6 +17,12 @@ class AppRoute{
   static const String login='/login';
   static const String signUp='/signUp';
   static const String forgot='/forgot';
+  static const String spinner='/spinner';
+  static const String cafe='/cafe';
+  static const String playstation='/playstation';
+  static const String prize='/prize';
+  static const String profile='/profile';
+
 
   static Route<dynamic> onGenerateRoutes(RouteSettings routeSettings){
     Widget _getPage(String? name){
@@ -21,6 +32,18 @@ class AppRoute{
         case signUp: return const RegisterScreen();
 
         case forgot: return const ForgotPassword();
+
+        case cafe: return const MenuScreen();
+
+        case spinner: return const SpinnerScreen();
+
+        case playstation: return const RoomsScreen();
+
+        case prize: return const TournametScreen();
+
+        case profile: return const TournametScreen();
+
+        case home: return const LandingPage();
 
         default: return const OnBoardingScreen();
       }

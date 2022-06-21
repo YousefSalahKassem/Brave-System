@@ -4,6 +4,7 @@ import 'package:bravesystem/constants/dimensions.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/Authentication/forgot_password.dart';
 import 'package:bravesystem/view/Authentication/register_screen.dart';
+import 'package:bravesystem/view/LandingPage/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
@@ -78,15 +79,20 @@ class LoginScreen extends StatelessWidget {
 
                         //Login
                         SizedBox(height: Dimensions.height20*1.5,),
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: ColorsApp().primary,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: const Center(
-                            child: Text(
-                              'Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
+                        InkWell(
+                          onTap: (){
+                            AppRoute.pushReplacement(const LandingPage(),name: '/');
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: ColorsApp().primary,
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
+                              ),
                             ),
                           ),
                         ),
