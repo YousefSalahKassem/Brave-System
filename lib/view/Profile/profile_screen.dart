@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                           Text('Account', style: TextStyle(color: Colors.grey.shade600,fontWeight: FontWeight.bold,fontSize: 14),),
                           SizedBox(height: Dimensions.height10,),
                           Container(
-                            height: Dimensions.height30*7.5,
+                            height: Dimensions.height30*8,
                             decoration: BoxDecoration(
                                 color: Get.isDarkMode?Colors.black:Colors.white,
                                 borderRadius: BorderRadius.circular(15)
@@ -86,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                           Text('Settings', style: TextStyle(color: Colors.grey.shade600,fontWeight: FontWeight.bold,fontSize: 14),),
                           SizedBox(height: Dimensions.height10,),
                           Container(
-                            height: Dimensions.height30*7.5,
+                            height: Dimensions.height30*8,
                             decoration: BoxDecoration(
                                 color: Get.isDarkMode?Colors.black:Colors.white,
                                 borderRadius: BorderRadius.circular(15)
