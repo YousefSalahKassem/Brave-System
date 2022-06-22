@@ -3,6 +3,7 @@ import 'package:bravesystem/view/Authentication/login_screen.dart';
 import 'package:bravesystem/view/Authentication/register_screen.dart';
 import 'package:bravesystem/view/Cafe/menu_screen.dart';
 import 'package:bravesystem/view/LandingPage/landing_page.dart';
+import 'package:bravesystem/view/Playstation/room_details.dart';
 import 'package:bravesystem/view/Playstation/rooms_screen.dart';
 import 'package:bravesystem/view/Spinner/spinner_screen.dart';
 import 'package:bravesystem/view/Tournamets/tournamets_screen.dart';
@@ -22,6 +23,7 @@ class AppRoute{
   static const String playstation='/playstation';
   static const String prize='/prize';
   static const String profile='/profile';
+  static const String roomDetails='/roomDetails';
 
 
   static Route<dynamic> onGenerateRoutes(RouteSettings routeSettings){
@@ -44,6 +46,8 @@ class AppRoute{
         case profile: return const TournametScreen();
 
         case home: return const LandingPage();
+
+        case roomDetails: return const RoomDetails();
 
         default: return const OnBoardingScreen();
       }

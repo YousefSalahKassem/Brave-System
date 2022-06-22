@@ -50,8 +50,7 @@ dependencies:
   dots_indicator: ^2.1.0
   introduction_screen: ^3.0.1
   after_layout: ^1.1.0
-
-
+  animated_custom_dropdown: ^1.2.2
 
 
 dev_dependencies:

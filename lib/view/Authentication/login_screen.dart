@@ -130,15 +130,15 @@ class LoginScreen extends StatelessWidget {
                                 margin: const EdgeInsets.only(left: 10),
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    color: ColorsApp().primary,
+                                    color: Colors.deepOrangeAccent,
                                     borderRadius: BorderRadius.circular(10)
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: const [
-                                    Icon(FontAwesomeIcons.facebookF,color: Colors.white,),
+                                    Icon(FontAwesomeIcons.phone,color: Colors.white,),
                                     Text(
-                                      'Facebook',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16),
+                                      'Phone',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16),
                                     ),
                                   ],
                                 ),

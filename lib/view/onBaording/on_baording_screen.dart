@@ -12,47 +12,48 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: IntroductionScreen(
-      pages: [
+    return Scaffold(
+      body: SafeArea(child: IntroductionScreen(
+        pages: [
 
-        PageViewModel(
-          title: 'Playstation',
-          body: 'Enjoy your time with us ❤️,\nBook your room now and enjoy with your friends !',
-          image: SvgPicture.asset('assets/images/gaming.svg',width: Dimensions.splashImage*1.5,),
-          decoration: getPageDecoration(),
-
-    ),
-
-        PageViewModel(
-            title: 'Cafe',
-            body: 'Enjoy your coffee ❤️,\nOrder your coffee while playing with your friends !',
-            image: SvgPicture.asset('assets/images/coffe.svg',width: Dimensions.splashImage*1.5,),
+          PageViewModel(
+            title: 'Playstation',
+            body: 'Enjoy your time with us ❤️,\nBook your room now and enjoy with your friends !',
+            image: SvgPicture.asset('assets/images/gaming.svg',width: Dimensions.splashImage*1.5,),
             decoration: getPageDecoration(),
 
-        ),
+      ),
 
-        PageViewModel(
-            title: 'Brave Cafe',
-            body: 'Enjoy your time in your\nsecond home ❤️',
-            image: Image.asset('assets/images/logo2.png',width: Dimensions.splashImage*1.5,),
-            decoration: getPageDecoration(),
-            footer: ButtonWidget(
-            text: 'Explore Now',
-            onClicked: () => goToLogin(context),
+          PageViewModel(
+              title: 'Cafe',
+              body: 'Enjoy your coffee ❤️,\nOrder your coffee while playing with your friends !',
+              image: SvgPicture.asset('assets/images/coffe.svg',width: Dimensions.splashImage*1.5,),
+              decoration: getPageDecoration(),
 
           ),
-        ),
 
-      ],
-      done: const Text('Next', style: TextStyle(fontWeight: FontWeight.w600)),
-      onDone: () => goToLogin(context),
-      showSkipButton: true,
-      skip: const Text('Skip'),
-      onSkip: () => goToLogin(context),
-      next: const Icon(Icons.arrow_forward),
-      dotsDecorator: getDotDecoration(),
+          PageViewModel(
+              title: 'Brave Cafe',
+              body: 'Enjoy your time in your\nsecond home ❤️',
+              image: Image.asset('assets/images/logo2.png',width: Dimensions.splashImage*1.5,),
+              decoration: getPageDecoration(),
+              footer: ButtonWidget(
+              text: 'Explore Now',
+              onClicked: () => goToLogin(context),
 
-    )
+            ),
+          ),
+
+        ],
+        done: const Text('Next', style: TextStyle(fontWeight: FontWeight.w600)),
+        onDone: () => goToLogin(context),
+        showSkipButton: true,
+        skip: const Text('Skip'),
+        onSkip: () => goToLogin(context),
+        next: const Icon(Icons.arrow_forward),
+        dotsDecorator: getDotDecoration(),
+      )
+      ),
     );
   }
 
@@ -76,7 +77,6 @@ class OnBoardingScreen extends StatelessWidget {
     contentMargin: const EdgeInsets.all(16).copyWith(bottom: 0),
     footerPadding: EdgeInsets.only(top: Dimensions.height30*2),
     imagePadding: const EdgeInsets.all(24),
-    pageColor: Colors.white,
   );
 
 }
