@@ -117,8 +117,8 @@ class ProfileScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15)
                             ),
 
-                            child: ListTile(
-                              title: const Text("Logout",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
+                            child: const ListTile(
+                              title: Text("Logout",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
                               leading: Icon(Icons.logout,color: Colors.red,),
                             ),
                           ),
