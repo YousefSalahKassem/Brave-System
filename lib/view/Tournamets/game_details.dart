@@ -70,7 +70,7 @@ class GameDetails extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.only(top: 15),
                           alignment: Alignment.center,
-                          height: Dimensions.height30*7.6,
+                          height: Dimensions.height30*8,
                           width: Dimensions.width30*18,
                           decoration: BoxDecoration(
                             color: ColorsApp().primary,
@@ -228,15 +228,13 @@ class GameDetails extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   child: SizedBox(
-                    height: Dimensions.splashImage*1.14,
-                    width: Dimensions.screenWidth,
+                    height: Dimensions.splashImage*1.12,
                     child: ListView.builder(
                       itemCount: knockOuts.length,
                       itemBuilder: (context,index){
                         return Container(
                           margin: const EdgeInsets.all(8),
-                          height: Dimensions.height30*4,
-                          width: Dimensions.height30*3,
+                          padding: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(Dimensions.height30),
                             color: ColorsApp().blueTransparent,
@@ -290,7 +288,7 @@ class GameDetails extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                width:Dimensions.height30*1.5,
+                                width:Dimensions.height30*2.5,
                                 child: Column(
                                   children: [
                                     Container(
@@ -298,7 +296,8 @@ class GameDetails extends StatelessWidget {
                                           color: ColorsApp().blueKnockOut,
                                           borderRadius: BorderRadius.only(topRight: Radius.circular(Dimensions.height30))
                                         ),
-                                        height: Dimensions.height30*1.88,
+                                        height: Dimensions.height30*2,
+                                        width:Dimensions.splashImage*1.5,
                                         child: Center(child: Text(knockOuts[index].hostScore,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),))),
                                     Divider(
                                       color: ColorsApp().primary,
@@ -306,7 +305,7 @@ class GameDetails extends StatelessWidget {
                                       height: 3,
                                     ),
                                     SizedBox(
-                                      height: Dimensions.height30*1.85,
+                                      height: Dimensions.height30*2,
                                       child: Align(
                                           alignment: Alignment.center,
                                           child: Text(knockOuts[index].hostScore,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),

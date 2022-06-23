@@ -88,7 +88,7 @@ class TournamentScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 15),
                             alignment: Alignment.center,
-                            height: Dimensions.height30*7.6,
+                            height: Dimensions.height30*8,
                             width: Dimensions.width30*18,
                             decoration: BoxDecoration(
                               color: ColorsApp().primary,
