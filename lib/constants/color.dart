@@ -19,7 +19,7 @@ class ColorsApp{
   static final Color _blueTransparent= const Color(0XFF121212).withOpacity(.12);
   static const Color _borderColor = Color(0XFF003654);
   static final Color _shadowPsIcon= const Color(0XFF01597F).withOpacity(.34);
-  // static const Color _blueText = Color(0XFF075779);
+  static const Color _blueKnockout = Color(0XFF003654);
 
 
   final RxBool _darkMode= true.obs;
@@ -40,6 +40,7 @@ class ColorsApp{
   Color get googleButton => _redButton;
   Color get shadowPs => _shadowPsIcon;
   Color get greyIcon => _greyIcon;
+  Color get blueKnockOut => _blueKnockout;
   bool get isDarkMode => _darkMode.value;
 
 

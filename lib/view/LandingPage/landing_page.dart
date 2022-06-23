@@ -29,7 +29,7 @@ class LandingPage extends StatelessWidget {
                 SpinnerScreen(),
                 MenuScreen(),
                 RoomsScreen(),
-                TournametScreen(),
+                TournamentScreen(),
                 ProfileScreen()
               ],
             ),

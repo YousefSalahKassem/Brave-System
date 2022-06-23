@@ -5,7 +5,10 @@ import 'package:bravesystem/view/Cafe/menu_screen.dart';
 import 'package:bravesystem/view/LandingPage/landing_page.dart';
 import 'package:bravesystem/view/Playstation/room_details.dart';
 import 'package:bravesystem/view/Playstation/rooms_screen.dart';
+import 'package:bravesystem/view/Profile/profile_screen.dart';
 import 'package:bravesystem/view/Spinner/spinner_screen.dart';
+import 'package:bravesystem/view/Tournamets/game_details.dart';
+import 'package:bravesystem/view/Tournamets/news_details.dart';
 import 'package:bravesystem/view/Tournamets/tournamets_screen.dart';
 import 'package:bravesystem/view/onBaording/on_baording_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +27,10 @@ class AppRoute{
   static const String prize='/prize';
   static const String profile='/profile';
   static const String roomDetails='/roomDetails';
+  static const String newsDetails='/newsDetails';
+  static const String gameDetails='/gameDetails';
+  static const String tournaments='/tournaments';
+
 
 
   static Route<dynamic> onGenerateRoutes(RouteSettings routeSettings){
@@ -41,13 +48,19 @@ class AppRoute{
 
         case playstation: return const RoomsScreen();
 
-        case prize: return const TournametScreen();
+        case prize: return const TournamentScreen();
 
-        case profile: return const TournametScreen();
+        case profile: return const ProfileScreen();
 
         case home: return const LandingPage();
 
         case roomDetails: return const RoomDetails();
+
+        case tournaments: return const TournamentScreen();
+
+        case newsDetails: return const NewsDetails();
+
+        case gameDetails: return const GameDetails();
 
         default: return const OnBoardingScreen();
       }
