@@ -234,15 +234,14 @@ class GameDetails extends StatelessWidget {
                       itemBuilder: (context,index){
                         return Container(
                           margin: const EdgeInsets.all(8),
-                          padding: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(Dimensions.height30),
                             color: ColorsApp().blueTransparent,
                           ),
                           child: Row(
                             children: [
-                              SizedBox(
-                                width:Dimensions.splashImage*1.3,
+                              Expanded(
+                                flex:4,
                                 child: Column(
                                   children: [
                                     Padding(
@@ -282,13 +281,12 @@ class GameDetails extends StatelessWidget {
                               SizedBox(
                                 height: Dimensions.height30*4,
                                 child: Container(
-                                  height: Dimensions.splashImage,
                                   width: 3,
                                   color: ColorsApp().primary,
                                 ),
                               ),
-                              SizedBox(
-                                width:Dimensions.height30*2.5,
+                              Expanded(
+                                flex:1,
                                 child: Column(
                                   children: [
                                     Container(
