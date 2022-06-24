@@ -54,7 +54,7 @@ class SpinnerScreen extends StatelessWidget {
                 SizedBox(height: Dimensions.height30,),
                 Container(
                   width: Dimensions.height30*5,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: ColorsApp().primary,
                     borderRadius: BorderRadius.circular(10),

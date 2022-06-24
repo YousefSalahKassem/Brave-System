@@ -2,6 +2,8 @@ import 'package:bravesystem/view/Authentication/forgot_password.dart';
 import 'package:bravesystem/view/Authentication/login_screen.dart';
 import 'package:bravesystem/view/Authentication/register_screen.dart';
 import 'package:bravesystem/view/Cafe/menu_screen.dart';
+import 'package:bravesystem/view/Cafe/product_details.dart';
+import 'package:bravesystem/view/Cafe/shopping_cart.dart';
 import 'package:bravesystem/view/LandingPage/landing_page.dart';
 import 'package:bravesystem/view/Playstation/room_details.dart';
 import 'package:bravesystem/view/Playstation/rooms_screen.dart';
@@ -30,6 +32,8 @@ class AppRoute{
   static const String newsDetails='/newsDetails';
   static const String gameDetails='/gameDetails';
   static const String tournaments='/tournaments';
+  static const String productDetails='/productDetails';
+  static const String shoppingCart='/shoppingCart';
 
 
 
@@ -61,6 +65,10 @@ class AppRoute{
         case newsDetails: return const NewsDetails();
 
         case gameDetails: return const GameDetails();
+
+        case productDetails: return const ProductDetails();
+
+        case shoppingCart: return const ShoppingCart();
 
         default: return const OnBoardingScreen();
       }
