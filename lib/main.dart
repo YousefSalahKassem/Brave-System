@@ -1,16 +1,18 @@
 import 'package:bravesystem/constants/color.dart';
+import 'package:bravesystem/firebase_options.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/onBaording/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/route_manager.dart';
 import 'package:get/get.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'constants/globals.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

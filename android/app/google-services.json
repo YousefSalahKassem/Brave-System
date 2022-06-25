@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "167263235132",
+    "project_id": "brave-system-fb62b",
+    "storage_bucket": "brave-system-fb62b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167263235132:android:9d9d3eb51ec5be9847e739",
+        "android_client_info": {
+          "package_name": "com.brave.www.bravesystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167263235132-fqu98e3ke1pos0pm1cfu43at64qea96u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8tjYcIafOz-05IuzqvAHOvakxYl_qMVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167263235132-fqu98e3ke1pos0pm1cfu43at64qea96u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
