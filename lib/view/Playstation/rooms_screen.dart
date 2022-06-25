@@ -62,7 +62,7 @@ class RoomsScreen extends StatelessWidget {
             width: Dimensions.screenWidth,
             height: Dimensions.screenHeight,
             decoration: BoxDecoration(
-              color: ColorsApp().secondaryLight,
+              color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.height30*2))
             ),
             child: Padding(
@@ -121,7 +121,7 @@ class RoomsScreen extends StatelessWidget {
                                       child: Stack(
                                         children: [
                                           Container(
-                                            height: Dimensions.height30*6,
+                                            height: Dimensions.height30*5.5,
                                             width: Dimensions.width30*18,
                                             decoration: BoxDecoration(
                                               color: ColorsApp().primary,
@@ -143,26 +143,15 @@ class RoomsScreen extends StatelessWidget {
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       Text('Room ${index+1}', style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
-                                                      Row(
-                                                        children: [
-                                                          Container(
-                                                            margin: const EdgeInsets.symmetric(vertical: 10),
-                                                            height: Dimensions.height15,
-                                                            width: Dimensions.height15,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors.green,
-                                                                borderRadius: BorderRadius.circular(50)
-                                                            ),
-                                                          ),
-                                                          SizedBox(width: Dimensions.height10,),
-                                                          const Text('Available Now', style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontSize: 14),),
-                                                        ],),
-                                                      Row(
-                                                        children: [
-                                                          const Icon(FontAwesomeIcons.peopleGroup,color: Colors.white,size: 15,),
-                                                          SizedBox(width: Dimensions.height10,),
-                                                          const Text('3-5 Players', style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontSize: 14),),
-                                                        ],),
+                                                      Padding(
+                                                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                                        child: Row(
+                                                          children: [
+                                                            const Icon(FontAwesomeIcons.peopleGroup,color: Colors.white,size: 15,),
+                                                            SizedBox(width: Dimensions.height10,),
+                                                            const Text('3-5 Players', style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontSize: 14),),
+                                                          ],),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),

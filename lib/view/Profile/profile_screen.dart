@@ -1,8 +1,16 @@
 import 'package:bravesystem/constants/color.dart';
 import 'package:bravesystem/constants/dimensions.dart';
 import 'package:bravesystem/model/LocalModels/profile_model.dart';
+import 'package:bravesystem/utils/routes.dart';
+import 'package:bravesystem/view/Cafe/shopping_cart.dart';
+import 'package:bravesystem/view/Profile/booking_screen.dart';
+import 'package:bravesystem/view/Profile/edit_profile.dart';
+import 'package:bravesystem/view/Profile/order_history_screen.dart';
+import 'package:bravesystem/view/Tournamets/tournamets_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../controller/profile_controller.dart';
 
 
 class ProfileScreen extends StatelessWidget {
@@ -10,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ProfileController());
+
     return Scaffold(
       backgroundColor: ColorsApp().primary,
 
@@ -49,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
               child: Container(
                     width: Dimensions.screenWidth,
                     decoration:  BoxDecoration(
-                        color: Get.isDarkMode?Colors.black54:ColorsApp().secondaryLight,
+                        color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
                         borderRadius: const BorderRadius.only(topRight: Radius.circular(15),topLeft: Radius.circular(15))
                     ),
                     child: Padding(
@@ -74,6 +84,20 @@ class ProfileScreen extends StatelessWidget {
                                       ListTile(
                                         title: Text(options[index].name,style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold),),
                                         leading: Icon(options[index].icon,color: ColorsApp().primary,),
+                                        onTap: (){
+                                          if(index==0){
+                                            AppRoute.push(const ShoppingCart(),name: 'Shopping Cart');
+                                          }
+                                          else if(index==1) {
+                                            AppRoute.push(const BookingScreen(),name: 'Booking Screen');
+                                          }
+                                          else if(index==2) {
+                                            AppRoute.push(const OrderHistory(),name: 'Order Screen');
+                                          }
+                                          else{
+                                            AppRoute.push(const TournamentScreen(),name: 'Tournaments Screen');
+                                          }
+                                        },
                                       ),
                                       index==3?Container():Divider(color: ColorsApp().secondaryLight,height: 1,thickness: 2,)
                                     ],
@@ -85,26 +109,41 @@ class ProfileScreen extends StatelessWidget {
 
                           Text('Settings', style: TextStyle(color: Colors.grey.shade600,fontWeight: FontWeight.bold,fontSize: 14),),
                           SizedBox(height: Dimensions.height10,),
-                          Container(
-                            height: Dimensions.height30*8,
-                            decoration: BoxDecoration(
-                                color: Get.isDarkMode?Colors.black:Colors.white,
-                                borderRadius: BorderRadius.circular(15)
-                            ),
-                            child: ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: settings.length,
-                                itemBuilder: (context,index){
-                                  return Column(
-                                    children: [
-                                      ListTile(
-                                        title: Text(settings[index].name,style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold),),
-                                        leading: Icon(settings[index].icon,color: ColorsApp().primary,),
-                                      ),
-                                      index==3?Container():Divider(color: ColorsApp().secondaryLight,height: 1,thickness: 2,)
-                                    ],
-                                  );
-                                }),
+                          GetBuilder<ProfileController>(
+                            builder: (controller){
+                              return Container(
+                                height: Dimensions.height30*5.8,
+                                decoration: BoxDecoration(
+                                    color: Get.isDarkMode?Colors.black:Colors.white,
+                                    borderRadius: BorderRadius.circular(15)
+                                ),
+                                child: ListView.builder(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: settings.length,
+                                    itemBuilder: (context,index){
+                                      return Column(
+                                        children: [
+                                          ListTile(
+                                            title: Text(settings[index].name,style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold),),
+                                            leading: Icon(settings[index].icon,color: ColorsApp().primary,),
+                                            onTap: (){
+                                              if(index==0){
+                                                AppRoute.push(const EditProfile(), name: 'Edit Profile');
+                                              }
+                                              else if (index ==1){
+                                                controller.changeMode(context);
+                                              }
+                                              else{
+                                                controller.changeLanguage(context);
+                                              }
+                                            },
+                                          ),
+                                          index==2?Container():Divider(color: ColorsApp().secondaryLight,height: 1,thickness: 2,)
+                                        ],
+                                      );
+                                    }),
+                              );
+                            },
                           ),
 
                           SizedBox(height: Dimensions.height20,),

@@ -7,6 +7,10 @@ import 'package:bravesystem/view/Cafe/shopping_cart.dart';
 import 'package:bravesystem/view/LandingPage/landing_page.dart';
 import 'package:bravesystem/view/Playstation/room_details.dart';
 import 'package:bravesystem/view/Playstation/rooms_screen.dart';
+import 'package:bravesystem/view/Profile/booking_screen.dart';
+import 'package:bravesystem/view/Profile/edit_profile.dart';
+import 'package:bravesystem/view/Profile/order_details.dart';
+import 'package:bravesystem/view/Profile/order_history_screen.dart';
 import 'package:bravesystem/view/Profile/profile_screen.dart';
 import 'package:bravesystem/view/Spinner/spinner_screen.dart';
 import 'package:bravesystem/view/Tournamets/game_details.dart';
@@ -34,6 +38,10 @@ class AppRoute{
   static const String tournaments='/tournaments';
   static const String productDetails='/productDetails';
   static const String shoppingCart='/shoppingCart';
+  static const String bookingScreen='/bookingScreen';
+  static const String orderHistory='/orderHistory';
+  static const String orderDetails='/orderDetails';
+  static const String editInformation='/editInformation';
 
 
 
@@ -69,6 +77,14 @@ class AppRoute{
         case productDetails: return const ProductDetails();
 
         case shoppingCart: return const ShoppingCart();
+
+        case bookingScreen: return const BookingScreen();
+
+        case orderHistory: return const OrderHistory();
+
+        case orderDetails: return const OrderDetails();
+
+        case editInformation: return const EditProfile();
 
         default: return const OnBoardingScreen();
       }

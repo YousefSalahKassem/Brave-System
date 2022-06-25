@@ -94,7 +94,6 @@ class ShoppingCart extends StatelessWidget {
                   ),
                 );
               })),
-          const Spacer(),
           Container(
             width: Dimensions.screenWidth,
             height: Dimensions.height30*6,
@@ -143,7 +142,7 @@ class ShoppingCart extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

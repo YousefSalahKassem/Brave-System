@@ -46,7 +46,8 @@ class ColorsApp{
 
   ThemeData get darkTheme => ThemeData(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: dark,
+      scaffoldBackgroundColor: secondaryDark,
+
       inputDecorationTheme: InputDecorationTheme(
         prefixIconColor: primary,
         iconColor: primary,

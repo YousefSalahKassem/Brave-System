@@ -25,5 +25,4 @@ List<SettingsModel> settings =[
   SettingsModel('Edit Information', Icons.person),
   SettingsModel('Light Mode', Icons.light_mode),
   SettingsModel('Language', Icons.language),
-  SettingsModel('Help', Icons.info),
 ];
