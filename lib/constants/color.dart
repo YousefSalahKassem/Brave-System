@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 enum ColorMode {
@@ -67,6 +68,11 @@ class ColorsApp{
       scaffoldBackgroundColor: secondaryLight,
       brightness: Brightness.light,
       cardColor: secondaryLight,
+      appBarTheme: AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: primary
+        )
+      ),
       inputDecorationTheme: InputDecorationTheme(
         prefixIconColor: primary,
         iconColor: primary,

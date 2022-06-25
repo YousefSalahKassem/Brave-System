@@ -22,11 +22,13 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: ColorsApp().primary,
-
+      appBar: AppBar(
+        backgroundColor: ColorsApp().primary,
+        elevation: 0,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: Dimensions.height30,),
           Align(
             alignment: Alignment.center,
             child: Container(
@@ -55,13 +57,15 @@ class ProfileScreen extends StatelessWidget {
           ),
           SizedBox(height: Dimensions.height30,),
           Expanded(
-            child:SingleChildScrollView(
-              child: Container(
-                    width: Dimensions.screenWidth,
-                    decoration:  BoxDecoration(
-                        color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
-                        borderRadius: const BorderRadius.only(topRight: Radius.circular(15),topLeft: Radius.circular(15))
-                    ),
+            flex: 1,
+            child:Container(
+                  height: Dimensions.screenHeight,
+                  width: Dimensions.screenWidth,
+                  decoration:  BoxDecoration(
+                      color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
+                      borderRadius: const BorderRadius.only(topRight: Radius.circular(15),topLeft: Radius.circular(15))
+                  ),
+                  child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
@@ -165,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-            )
+                )
     )
         ]
       )

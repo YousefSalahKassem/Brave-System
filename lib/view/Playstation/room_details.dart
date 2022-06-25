@@ -58,7 +58,7 @@ class RoomDetails extends StatelessWidget {
                 child: Container(
                   height: Dimensions.splashImage*1.8,
                   decoration: BoxDecoration(
-                      color:Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
+                      color:Get.isDarkMode?ColorsApp().dark:ColorsApp().secondaryLight,
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.height30*2))
                   ),
                   child: Container(

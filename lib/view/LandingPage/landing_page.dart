@@ -21,18 +21,15 @@ class LandingPage extends StatelessWidget {
     return GetBuilder<BottomNavController>(
       builder: (controller){
         return Scaffold(
-          backgroundColor: ColorsApp().primary,
-          body: SafeArea(
-            child: IndexedStack(
-              index: controller.tabIndex,
-              children: const[
-                SpinnerScreen(),
-                MenuScreen(),
-                RoomsScreen(),
-                TournamentScreen(),
-                ProfileScreen()
-              ],
-            ),
+          body: IndexedStack(
+            index: controller.tabIndex,
+            children: const[
+              SpinnerScreen(),
+              MenuScreen(),
+              RoomsScreen(),
+              TournamentScreen(),
+              ProfileScreen()
+            ],
           ),
 
           bottomNavigationBar: BottomNavigationBar(

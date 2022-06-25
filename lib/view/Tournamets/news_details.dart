@@ -13,7 +13,7 @@ class NewsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
+      backgroundColor: Get.isDarkMode?ColorsApp().dark:ColorsApp().secondaryLight,
       body: Stack(
         children: [
           Stack(
@@ -38,7 +38,7 @@ class NewsDetails extends StatelessWidget {
             child: Container(
               height: Dimensions.splashImage*2.3,
               decoration: BoxDecoration(
-                  color:Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
+                  color:Get.isDarkMode?ColorsApp().dark:ColorsApp().secondaryLight,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.height30*2))
               ),
               child: Container(

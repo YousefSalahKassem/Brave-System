@@ -13,7 +13,6 @@ class SpinnerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SpinnerController());
     return Scaffold(
-      backgroundColor: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
       appBar:AppBar(
         title: Text('Brave Cafe',style: GoogleFonts.oleoScript(textStyle: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 22)),),
         centerTitle: true,
@@ -32,6 +31,7 @@ class SpinnerScreen extends StatelessWidget {
                   child: FortuneWheel(
                       animateFirst: false,
                       selected: controller.selected.stream,
+                      curve: FortuneCurve.spin,
                       indicators: const <FortuneIndicator>[
                         FortuneIndicator(
                           alignment: Alignment.topCenter, // <-- changing the position of the indicator

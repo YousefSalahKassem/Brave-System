@@ -20,8 +20,6 @@ class TournamentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.isDarkMode?ColorsApp().primary:ColorsApp().secondaryLight,
-
       appBar: AppBar(
         title: Text('Popular Games',style: GoogleFonts.oleoScript(textStyle: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 22)),),
         centerTitle: true,
