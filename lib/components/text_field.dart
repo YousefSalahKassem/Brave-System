@@ -8,7 +8,8 @@ class TextFieldApp extends StatelessWidget {
   Icon? icon;
   TextInputType? textInputType;
   bool isPassword;
-  TextFieldApp({Key? key,this.icon,required this.controller,this.hint,this.textInputType,required this.isPassword}) : super(key: key);
+  String validation;
+  TextFieldApp({Key? key,this.icon,required this.controller,this.hint,this.textInputType,required this.isPassword,required this.validation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,12 @@ class TextFieldApp extends StatelessWidget {
       style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold),
       keyboardType: textInputType,
       obscureText: isPassword,
+      validator: (value){
+        if(value==null){
+          return validation;
+        }
+        return null;
+      },
       decoration: InputDecoration(
         hintText: hint,
         prefixIcon: icon,

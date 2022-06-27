@@ -48,11 +48,11 @@ class AppRoute{
   static Route<dynamic> onGenerateRoutes(RouteSettings routeSettings){
     Widget _getPage(String? name){
       switch (name){
-        case login: return const LoginScreen();
+        case login: return LoginScreen();
 
-        case signUp: return const RegisterScreen();
+        case signUp: return RegisterScreen();
 
-        case forgot: return const ForgotPassword();
+        case forgot: return ForgotPassword();
 
         case cafe: return const MenuScreen();
 

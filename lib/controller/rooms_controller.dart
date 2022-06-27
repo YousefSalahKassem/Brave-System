@@ -76,7 +76,16 @@ class RoomsController extends GetxController{
                 ),
                 SizedBox(height: Dimensions.height20,),
 
-                TextFieldApp(controller: promoCode,hint: "Promo Code..",icon: const Icon(FontAwesomeIcons.gift),textInputType: TextInputType.name,isPassword: false,),
+                TextFormField(
+                  controller: promoCode,
+                  style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold),
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                      hintText: "Promo Code..",
+                      prefixIcon: const Icon(FontAwesomeIcons.gift),
+                      hintStyle: TextStyle(color: ColorsApp().greyIcon)
+                  ),
+                ),
                 SizedBox(height: Dimensions.height20,),
 
                 Row(

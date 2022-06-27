@@ -15,6 +15,7 @@ class EditProfile extends StatelessWidget {
     TextEditingController name= TextEditingController();
     TextEditingController email= TextEditingController();
     TextEditingController phone= TextEditingController();
+    final formKey=GlobalKey<FormState>();
 
     return Scaffold(
       backgroundColor: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
@@ -76,7 +77,7 @@ class EditProfile extends StatelessWidget {
                   child: Text('Email', style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 14),),
                 ),
                 SizedBox(height: Dimensions.height10/5,),
-                TextFieldApp(controller: email,hint: "Email",icon: const Icon(Icons.email),textInputType: TextInputType.emailAddress,isPassword: false,),
+                TextFieldApp(controller: email,hint: "Email",icon: const Icon(Icons.email),textInputType: TextInputType.emailAddress,isPassword: false,validation: 'Email is empty, please enter your email',),
                 SizedBox(height: Dimensions.height30,),
 
                 //name
@@ -85,7 +86,7 @@ class EditProfile extends StatelessWidget {
                   child: Text('Name', style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 14),),
                 ),
                 SizedBox(height: Dimensions.height10/5,),
-                TextFieldApp(controller: name,hint: "Name",icon: const Icon(Icons.person),textInputType: TextInputType.name,isPassword: false,),
+                TextFieldApp(controller: name,hint: "Name",icon: const Icon(Icons.person),textInputType: TextInputType.name,isPassword: false,validation: 'Name is empty, please enter your name',),
                 SizedBox(height: Dimensions.height30,),
 
                 //phone
@@ -94,7 +95,7 @@ class EditProfile extends StatelessWidget {
                   child: Text('Phone', style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 14),),
                 ),
                 SizedBox(height: Dimensions.height10/5,),
-                TextFieldApp(controller: phone,hint: "Phone",icon: const Icon(Icons.phone),textInputType: TextInputType.phone,isPassword: false,),
+                TextFieldApp(controller: phone,hint: "Phone",icon: const Icon(Icons.phone),textInputType: TextInputType.phone,isPassword: false,validation: 'Phone is empty, please enter your phone',),
                 SizedBox(height: Dimensions.height30,),
 
                 //save

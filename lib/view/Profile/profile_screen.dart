@@ -1,5 +1,6 @@
 import 'package:bravesystem/constants/color.dart';
 import 'package:bravesystem/constants/dimensions.dart';
+import 'package:bravesystem/controller/auth_controller.dart';
 import 'package:bravesystem/model/LocalModels/profile_model.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/Cafe/shopping_cart.dart';
@@ -154,24 +155,29 @@ class ProfileScreen extends StatelessWidget {
 
                           Text('Logout', style: TextStyle(color: Colors.grey.shade600,fontWeight: FontWeight.bold,fontSize: 14),),
                           SizedBox(height: Dimensions.height10,),
-                          Container(
+                      GetBuilder<AuthController>(
+                        builder: (controller){
+                          return Container(
                             decoration: BoxDecoration(
                                 color: Get.isDarkMode?Colors.black:Colors.white,
                                 borderRadius: BorderRadius.circular(15)
                             ),
 
-                            child: const ListTile(
-                              title: Text("Logout",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
-                              leading: Icon(Icons.logout,color: Colors.red,),
+                            child: ListTile(
+                              title: const Text("Logout",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
+                              leading: const Icon(Icons.logout,color: Colors.red,),
+                              onTap: (){
+                                controller.signOut();
+                              },
                             ),
-                          ),
-                        ],
+                          );
+                        }
                       ),
-                    ),
+                    ]),
                   ),
                 )
     )
-        ]
+          )]
       )
     );
   }

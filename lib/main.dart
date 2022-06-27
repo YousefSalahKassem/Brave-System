@@ -1,5 +1,6 @@
 import 'package:bravesystem/constants/color.dart';
 import 'package:bravesystem/firebase_options.dart';
+import 'package:bravesystem/utils/binding.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/onBaording/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Brave Cafe',
+      initialBinding: Binding(),
       theme: ColorsApp().lightTheme,
       darkTheme: ColorsApp().darkTheme,
       navigatorKey: Globals.instance.navigatorKey,

@@ -58,7 +58,7 @@ class OnBoardingScreen extends StatelessWidget {
   }
 
   void goToLogin(context){
-    AppRoute.pushReplacement(const LoginScreen(),name: 'login' );
+    AppRoute.pushReplacement(LoginScreen(),name: 'login' );
   }
 
   DotsDecorator getDotDecoration() => DotsDecorator(
