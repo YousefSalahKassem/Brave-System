@@ -1,3 +1,6 @@
+import 'package:bravesystem/model/ServiceModel/categories_model.dart';
+import 'package:bravesystem/model/ServiceModel/category_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,12 +10,40 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import '../components/text_field.dart';
 import '../constants/color.dart';
 import '../constants/dimensions.dart';
+import '../model/ServiceModel/room_model.dart';
 
 class RoomsController extends GetxController{
   var roomIndex=0;
+
+  Rxn<List<Room>> room=Rxn<List<Room>>();
+  List<Room>? get rooms=> room.value;
+
+  Rxn<List<CategoryModel>> category=Rxn<List<CategoryModel>>();
+  List<CategoryModel>? get categories=> category.value;
+
+  Rxn<List<String>> secondCategory=Rxn<List<String>>();
+  List<String>? get secondCategories=> secondCategory.value;
+
+  Rxn<List<Room>> selectedSecondCategory=Rxn<List<Room>>();
+  List<Room>? get selectedSecondCategories=> selectedSecondCategory.value;
+
+
   RxList <String> images = ['assets/images/room1.jpg','assets/images/room2.jpg','assets/images/room3.jpg','assets/images/room4.jpg','assets/images/room5.jpg'].obs;
   TextEditingController promoCode=TextEditingController();
   TimeOfDay time = TimeOfDay.now();
+  String selectedCategory='';
+
+  CollectionReference allRooms=FirebaseFirestore.instance.collection('rooms');
+  CollectionReference allCategories=FirebaseFirestore.instance.collection('categories');
+
+  @override
+  void onInit() {
+    room.bindStream(getAllRooms(selectedCategory));
+    category.bindStream(getAllCategories());
+    selectedSecondCategory.bindStream(getAllRoomsByCategory());
+    super.onInit();
+  }
+
 
 
   void changeTabIndex(int index){
@@ -115,4 +146,35 @@ class RoomsController extends GetxController{
           );
         });
   }
+
+  void selectCategory(String  category){
+    selectedCategory=category;
+    update();
+  }
+
+  Stream<List<Room>> getAllRooms(String room) {
+    update();
+    return selectedCategory.isEmpty?allRooms.snapshots().map((query) {
+      update();
+      return query.docs.map((item) => Room.fromMap(item)).toList();}):
+    FirebaseFirestore.instance.collection('rooms').where(selectedCategory,isEqualTo: 'secondCategory').snapshots().map((query) {
+      update();
+      return query.docs.map((item) => Room.fromMap(item)).toList();});
+  }
+
+
+  Stream<List<Room>> getAllRoomsByCategory() =>
+
+      selectedCategory.isEmpty?allRooms.snapshots().map((query) {
+        update();
+        return query.docs.map((item) => Room.fromMap(item)).toList();}):
+      FirebaseFirestore.instance.collection('rooms').where(selectedCategory,isEqualTo: 'category').snapshots().map((query) {
+        update();
+        return query.docs.map((item) => Room.fromMap(item)).toList();});
+
+  Stream<List<CategoryModel>> getAllCategories() =>
+      allCategories.snapshots().map((query) {
+        update();
+        return query.docs.map((item) => CategoryModel.fromMap(item)).toList();});
+
 }

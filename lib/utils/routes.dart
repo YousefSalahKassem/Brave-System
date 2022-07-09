@@ -66,7 +66,7 @@ class AppRoute{
 
         case home: return const LandingPage();
 
-        case roomDetails: return const RoomDetails();
+        case roomDetails: return RoomDetails();
 
         case tournaments: return const TournamentScreen();
 

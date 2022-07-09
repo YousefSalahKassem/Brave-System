@@ -39,12 +39,12 @@ class BookingScreen extends StatelessWidget {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: rooms.length,
+                      itemCount: 3,
                       physics: const ClampingScrollPhysics(), // todo comment this out and check the result
                       itemBuilder: (context,index){
                         return InkWell(
                           onTap: (){
-                            AppRoute.push(const RoomDetails(),name: 'RoomDetails');
+                            AppRoute.push(RoomDetails(),name: 'RoomDetails');
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8.0),

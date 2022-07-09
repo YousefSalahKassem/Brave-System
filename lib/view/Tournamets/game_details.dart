@@ -63,7 +63,7 @@ class GameDetails extends StatelessWidget {
           GetBuilder<RoomsController>(
             builder: (controller){
               return CarouselSlider.builder(
-                  itemCount: rooms.length,
+                  itemCount: 3,
                   itemBuilder: (context,index,_){
                     return Stack(
                       children: [

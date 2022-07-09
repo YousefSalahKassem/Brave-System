@@ -1,26 +1,28 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:bravesystem/constants/color.dart';
 import 'package:bravesystem/constants/dimensions.dart';
+import 'package:bravesystem/controller/auth_controller.dart';
 import 'package:bravesystem/controller/rooms_controller.dart';
 import 'package:bravesystem/model/ServiceModel/category_model.dart';
 import 'package:bravesystem/model/ServiceModel/room_model.dart';
+import 'package:bravesystem/service/firestore_user.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/Playstation/room_details.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-class RoomsScreen extends StatelessWidget {
+class RoomsScreen extends GetView<RoomsController> {
   const RoomsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var items =['Hii','Bye'];
-    TextEditingController controller= TextEditingController();
+    TextEditingController controllers= TextEditingController();
+    FireStoreUser user= FireStoreUser();
     Get.put(RoomsController());
-
 
     return Scaffold(
       backgroundColor: ColorsApp().primary,
@@ -39,76 +41,60 @@ class RoomsScreen extends StatelessWidget {
           ),
         )],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: Dimensions.height30,
-          ),
-          
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: Text('Hello, Yousef Salah', style: TextStyle(color: Colors.grey.shade400,fontWeight: FontWeight.bold,fontSize: 14),),
-          ),
-          const SizedBox(height: 8,),
-          const Padding(
-            padding: EdgeInsets.only(left: 15.0),
-            child: Text('Enjoy your second\nHome.', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
-          ),
-          
-          SizedBox(height: Dimensions.height30,),
-          
-          Expanded(child: Container(
-            width: Dimensions.screenWidth,
-            height: Dimensions.screenHeight,
-            decoration: BoxDecoration(
-              color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.height30*2))
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: Dimensions.height30*1.5,),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+      body: GetBuilder<RoomsController>(
+        builder: (controller){
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: Dimensions.height30,
+              ),
+              GetBuilder<AuthController>(
+                builder: (authController){
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Text('Hello, ${authController.users![0].name!}', style: TextStyle(color: Colors.grey.shade400,fontWeight: FontWeight.bold,fontSize: 14),),
+                  );
+                },
+              ),
+              const SizedBox(height: 8,),
+              const Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Text('Enjoy your second\nHome.', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+              ),
+
+              SizedBox(height: Dimensions.height30,),
+
+              Expanded(child: Container(
+                width: Dimensions.screenWidth,
+                height: Dimensions.screenHeight,
+                decoration: BoxDecoration(
+                    color: Get.isDarkMode?ColorsApp().secondaryDark:ColorsApp().secondaryLight,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.height30*2))
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(top: Dimensions.height30*1.5,),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Column(
                           children: [
                             const Text('Recently Popular', style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 12),),
                             Text('Top Rated', style: TextStyle(color: ColorsApp().primary,fontWeight: FontWeight.bold,fontSize: 22),),
                           ],
                         ),
-                        SizedBox(
-                          height: Dimensions.height30*1.5,
-                          width: Dimensions.height30*4,
-                          child: CustomDropdown(
-                            selectedStyle: TextStyle(color: ColorsApp().primary),
-                            hintStyle: TextStyle(color: ColorsApp().primary),
-                            items: items,
-                            controller: controller,
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: ColorsApp().primary,width: 3),
-                            onChanged: (value){
-                            },
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      ),
 
-                  SizedBox(height: Dimensions.height20,),
+                      SizedBox(height: Dimensions.height20,),
 
-                  GetBuilder<RoomsController>(
-                    builder: (controller){
-                      return CarouselSlider.builder(
-                          itemCount: rooms.length,
+                      CarouselSlider.builder(
+                          itemCount: controller.rooms!.length,
                           itemBuilder: (context,index,_){
                             return InkWell(
                               onTap: (){
-                                AppRoute.push(const RoomDetails(),name: 'RoomDetails');
+                                AppRoute.push(RoomDetails(room: controller.rooms![index],),name: 'RoomDetails');
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -142,14 +128,14 @@ class RoomsScreen extends StatelessWidget {
                                                   child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                      Text('Room ${index+1}', style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
+                                                      Text(controller.rooms![index].name!, style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
                                                       Padding(
                                                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                                                         child: Row(
                                                           children: [
                                                             const Icon(FontAwesomeIcons.peopleGroup,color: Colors.white,size: 15,),
                                                             SizedBox(width: Dimensions.height10,),
-                                                            const Text('3-5 Players', style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontSize: 14),),
+                                                            Text(controller.rooms![index].players!, style: const TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontSize: 14),),
                                                           ],),
                                                       ),
                                                     ],
@@ -198,7 +184,7 @@ class RoomsScreen extends StatelessWidget {
                                     Positioned(
                                         top: 0,
                                         right: 0,
-                                        child: Image.asset('assets/images/playstation5.png'))
+                                        child: Image.network(controller.rooms![index].image!))
 
                                   ],
                                 ),
@@ -213,15 +199,11 @@ class RoomsScreen extends StatelessWidget {
                               onPageChanged: (i,_){
                                 controller.changeTabIndex(i);
                               }
-                          ));
-                    },
-                  ),
+                          )),
 
-                  GetBuilder<RoomsController>(
-                    builder: (controller){
-                      return Center(
+                      Center(
                         child: DotsIndicator(
-                          dotsCount: rooms.length,
+                          dotsCount: controller.rooms!.length,
                           position: controller.roomIndex.toDouble(),
                           decorator: DotsDecorator(
                             activeColor: ColorsApp().primary,
@@ -230,50 +212,50 @@ class RoomsScreen extends StatelessWidget {
                             activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      SizedBox(height: Dimensions.height30,),
+
+                      SizedBox(
+                        height: Dimensions.height30*2,
+                        width: Dimensions.screenWidth,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: controller.categories!.length,
+                          itemBuilder: (context,index){
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Container(
+                                height: Dimensions.height30*1.5,
+                                width: Dimensions.height30*4,
+                                decoration: BoxDecoration(
+                                  color: ColorsApp().blueLight,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                        width: Dimensions.height30*2,
+                                        height: Dimensions.screenHeight,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15),
+                                            image:  DecorationImage(image: NetworkImage(controller.categories![index].image!),fit: BoxFit.cover,)
+                                        )),
+                                    SizedBox(width: Dimensions.height10,),
+                                    Text(controller.categories![index].name!,style: const TextStyle(fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                    ],
                   ),
-                  SizedBox(height: Dimensions.height30,),
-                  
-                  SizedBox(
-                    height: Dimensions.height30*2,
-                    width: Dimensions.screenWidth,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      itemBuilder: (context,index){
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Container(
-                            height: Dimensions.height30*1.5,
-                            width: Dimensions.height30*4,
-                            decoration: BoxDecoration(
-                              color: ColorsApp().blueLight,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                    width: Dimensions.height30*2,
-                                    height: Dimensions.screenHeight,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      image: const DecorationImage(image: AssetImage('assets/images/ps4.png',),fit: BoxFit.cover,)
-                                    )),
-                                SizedBox(width: Dimensions.height10,),
-                                const Text('Ps4',style: TextStyle(fontWeight: FontWeight.bold),)
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ))
-        ],
+                ),
+              ))
+            ],
+          );
+        },
       ),
     );
   }

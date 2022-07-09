@@ -144,21 +144,26 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Expanded(
-                                    child: Container(
-                                      margin: const EdgeInsets.only(left: 10),
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: Colors.deepOrangeAccent,
-                                          borderRadius: BorderRadius.circular(10)
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: const [
-                                          Icon(FontAwesomeIcons.phone,color: Colors.white,),
-                                          Text(
-                                            'Phone',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16),
-                                          ),
-                                        ],
+                                    child: InkWell(
+                                      onTap: (){
+                                        controller.loginWithPhoneSheet(context);
+                                      },
+                                      child: Container(
+                                        margin: const EdgeInsets.only(left: 10),
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepOrangeAccent,
+                                            borderRadius: BorderRadius.circular(10)
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: const [
+                                            Icon(FontAwesomeIcons.phone,color: Colors.white,),
+                                            Text(
+                                              'Phone',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

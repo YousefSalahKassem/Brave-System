@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> with AfterLayoutMixin{
     return "-1";
   }
 
-  Future checkFirstSeen(BuildContext context) async {
+  Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
 
@@ -58,6 +58,6 @@ class _SplashScreenState extends State<SplashScreen> with AfterLayoutMixin{
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) async{
     await updateSplash();
-    await checkFirstSeen(context);
+    await checkFirstSeen();
   }
 }

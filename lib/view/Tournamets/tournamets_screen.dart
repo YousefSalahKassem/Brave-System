@@ -46,7 +46,7 @@ class TournamentScreen extends StatelessWidget {
               width: Dimensions.screenWidth,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
+                itemCount: 3,
                 itemBuilder: (context,index){
                   return InkWell(
                     onTap: (){
@@ -56,7 +56,7 @@ class TournamentScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage(categories[index].image,),
+                        backgroundImage: AssetImage('',),
                       ),
                     ),
                   );
@@ -79,7 +79,7 @@ class TournamentScreen extends StatelessWidget {
             GetBuilder<RoomsController>(
               builder: (controller){
                 return CarouselSlider.builder(
-                    itemCount: rooms.length,
+                    itemCount: 3,
                     itemBuilder: (context,index,_){
                       return Stack(
                         children: [
@@ -216,7 +216,7 @@ class TournamentScreen extends StatelessWidget {
             GetBuilder<RoomsController>(
               builder: (controller){
                 return CarouselSlider.builder(
-                    itemCount: rooms.length,
+                    itemCount: 3,
                     itemBuilder: (context,index,_){
                       return InkWell(
                         onTap: (){

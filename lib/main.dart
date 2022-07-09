@@ -3,6 +3,7 @@ import 'package:bravesystem/firebase_options.dart';
 import 'package:bravesystem/utils/binding.dart';
 import 'package:bravesystem/utils/routes.dart';
 import 'package:bravesystem/view/onBaording/splash_screen.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,9 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  await FirebaseAppCheck.instance.activate(
+    webRecaptchaSiteKey: '6LdlmaUgAAAAAJbxkjT-rGN5m78md4hZQrP2M4qq',
+  );  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
